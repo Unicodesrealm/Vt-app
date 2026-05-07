@@ -1142,7 +1142,7 @@ export default function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard 
               icon={MapIcon}
-              title="Planeamento Territorial"
+              title="Planeamento Territorial e urbanismo"
               items={[
                 "Planos de Estrutura Urbana (PEU)",
                 "Planos de Pormenor e Reordenamento",
@@ -1153,7 +1153,7 @@ export default function App() {
             />
             <ServiceCard 
               icon={Building2}
-              title="Arquitectura e Obras"
+              title="Arquitetura e fiscalização"
               items={[
                 "Projectos Executivos Habitacionais",
                 "Acompanhamento e Fiscalização",
@@ -1164,7 +1164,7 @@ export default function App() {
             />
             <ServiceCard 
               icon={Users}
-              title="Desenvolvimento Institucional"
+              title="Capacitação Institucional"
               items={[
                 "Capacitação em Instrumentos de Planeamento",
                 "Treinamento em Liderança Participativa",
