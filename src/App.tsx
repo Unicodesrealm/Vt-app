@@ -618,6 +618,15 @@ export default function App() {
     }
   ];
 
+  const handleOpenProject = (keyword: string) => {
+    const proj = detailedProjects.find(p => p.title.includes(keyword) || p.description.includes(keyword) || p.location.includes(keyword) || p.client.includes(keyword));
+    setView('portfolio');
+    if (proj) {
+      setTimeout(() => setSelectedProject(proj), 100);
+    }
+    window.scrollTo(0, 0);
+  };
+
   if (view === 'portfolio') {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -1184,7 +1193,7 @@ export default function App() {
               client="Conselho Municipal de Pemba"
               location="Pemba, Cabo Delgado"
               year="2023 - 2024"
-              onSeeDetails={() => { setView('portfolio'); setTimeout(() => window.scrollTo(0, 0), 100); }}
+              onSeeDetails={() => handleOpenProject('Pemba')}
             />
             <ProjectCard 
               category="Logística"
@@ -1192,7 +1201,7 @@ export default function App() {
               client="Conselho Municipal de Nacala"
               location="Nacala, Nampula"
               year="2025 - 2026"
-              onSeeDetails={() => { setView('portfolio'); setTimeout(() => window.scrollTo(0, 800), 100); }}
+              onSeeDetails={() => handleOpenProject('Nacala')}
             />
             <ProjectCard 
               category="Mobilidade"
@@ -1200,7 +1209,7 @@ export default function App() {
               client="Conselho Municipal da Beira"
               location="Beira, Sofala"
               year="2026 (Em Execução)"
-              onSeeDetails={() => { setView('portfolio'); setTimeout(() => window.scrollTo(0, 1600), 100); }}
+              onSeeDetails={() => handleOpenProject('PDMMU')}
             />
             <ProjectCard 
               category="Reordenamento"
@@ -1208,7 +1217,7 @@ export default function App() {
               client="Conselho Municipal da Beira"
               location="Bairro Macurrungo, Beira"
               year="2025 - 2026"
-              onSeeDetails={() => { setView('portfolio'); setTimeout(() => window.scrollTo(0, 2400), 100); }}
+              onSeeDetails={() => handleOpenProject('Macurrungo')}
             />
             <ProjectCard 
               category="Planeamento"
@@ -1216,7 +1225,7 @@ export default function App() {
               client="Conselho Municipal de Mandlakazi"
               location="Mandlakazi, Gaza"
               year="2024 - 2025 (Concluído)"
-              onSeeDetails={() => { setView('portfolio'); setTimeout(() => window.scrollTo(0, 3200), 100); }}
+              onSeeDetails={() => handleOpenProject('Mandlakazi')}
             />
             <ProjectCard 
               category="Ordenamento"
@@ -1224,6 +1233,7 @@ export default function App() {
               client="Fundo Nacional de Desenvolvimento Sustentável"
               location="Província de Manica"
               year="2020 - 2021"
+              onSeeDetails={() => handleOpenProject('Sussundenga')}
             />
             <ProjectCard 
               category="Arquitectura"
@@ -1231,7 +1241,7 @@ export default function App() {
               client="Cliente Particular"
               location="Província de Maputo"
               year="24 Meses"
-              onSeeDetails={() => setView('portfolio')}
+              onSeeDetails={() => handleOpenProject('Matola')}
             />
             <ProjectCard 
               category="Urbano"
@@ -1239,7 +1249,7 @@ export default function App() {
               client="Conselho Municipal de Nampula"
               location="Cidade de Nampula"
               year="8 Meses"
-              onSeeDetails={() => setView('portfolio')}
+              onSeeDetails={() => handleOpenProject('Mucuache')}
             />
             <ProjectCard 
               category="Especial"
@@ -1247,7 +1257,7 @@ export default function App() {
               client="ATOZ, Consultoria e Serviços"
               location="Ilha de Moçambique"
               year="3 Meses"
-              onSeeDetails={() => setView('portfolio')}
+              onSeeDetails={() => handleOpenProject('Lumbo')}
             />
              <ProjectCard 
               category="Edificações"
@@ -1255,7 +1265,7 @@ export default function App() {
               client="Grupo Loja das Damas"
               location="Maputo, Bairro Central"
               year="24 Meses"
-              onSeeDetails={() => setView('portfolio')}
+              onSeeDetails={() => handleOpenProject('Misto')}
             />
           </div>
 
