@@ -615,6 +615,42 @@ export default function App() {
           ]
         }
       ]
+    },
+    {
+      category: "Arquitectura",
+      title: "Projecto Residencial Matola Rio",
+      client: "Cliente Particular",
+      location: "Província de Maputo",
+      year: "24 Meses",
+      description: "Projecto arquitectónico completo para um complexo residencial privado, integrando sustentabilidade ambiental e eficiência energética.",
+      stats: ["Design Moderno", "Sustentabilidade", "Eficiência Energética"]
+    },
+    {
+      category: "Especial",
+      title: "Plano Geral de Urbanização - Lumbo",
+      client: "ATOZ, Consultoria e Serviços",
+      location: "Ilha de Moçambique",
+      year: "3 Meses",
+      description: "Desenvolvimento de um plano geral de urbanização rápido focado na expansão sustentável e preservação histórica.",
+      stats: ["Rápida Execução", "Património Histórico", "Expansão Sustentável"]
+    },
+    {
+      category: "Capacitação",
+      title: "Capacitação Institucional APIEX",
+      client: "APIEX Moçambique",
+      location: "Maputo",
+      year: "2023",
+      description: "Programa intensivo de capacitação técnica para técnicos em gestão territorial, sistemas SIG e planeamento estratégico.",
+      stats: ["Formação SIG", "Gestão Territorial", "Planeamento Estratégico"]
+    },
+    {
+      category: "Saneamento",
+      title: "Abordagem Participativa de Saneamento",
+      client: "Conselho Municipal da Ilha de Moçambique",
+      location: "Ilha de Moçambique",
+      year: "2022",
+      description: "Desenho e facilitação de formação comunitária sobre práticas sustentáveis de saneamento do meio urbano.",
+      stats: ["Participação Comunitária", "Saneamento Básico", "Saúde Pública"]
     }
   ];
 
@@ -661,89 +697,109 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-6 py-12">
 
-          <div className="grid gap-12">
-            {detailedProjects.map((project, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-gray-100 grid lg:grid-cols-3 gap-12"
-              >
-                <div className="lg:col-span-2 space-y-6">
-                  <div className="flex gap-3">
-                    <span className="px-4 py-1 bg-orange-50 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{project.category}</span>
-                    <span className="px-4 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-bold uppercase tracking-widest">{project.year}</span>
-                  </div>
-                  <h2 className="text-3xl font-display font-bold leading-tight">{project.title}</h2>
-                  <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
-                  
-                  <button 
-                    onClick={() => setSelectedProject(project)}
-                    className="flex items-center gap-2 text-vt-orange font-bold hover:gap-3 transition-all cursor-pointer bg-orange-50 px-6 py-2 rounded-full w-fit mt-2"
-                  >
-                    Saiba Mais <ArrowRight size={18} />
-                  </button>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
-                    {project.stats.map(stat => (
-                      <div key={stat} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                        <p className="text-vt-dark font-bold text-sm">{stat}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {project.events && (
-                    <div className="mt-8 space-y-6">
-                      <h4 className="font-display font-bold text-xl flex items-center gap-2">
-                        <FileText className="text-vt-orange" /> Documentação & Eventos
-                      </h4>
-                      <div className="space-y-4">
-                        {project.events.map((event: any, eIdx: number) => (
-                          <div key={eIdx} className="bg-orange-50/50 p-6 rounded-[2rem] border border-orange-100/50">
-                            <div className="flex justify-between items-start mb-4 gap-4 flex-wrap">
-                              <div>
-                                <p className="text-xs font-bold text-vt-orange uppercase tracking-widest">{event.date}</p>
-                                <h5 className="font-bold text-lg">{event.title}</h5>
-                              </div>
-                              <div className="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-gray-400 border border-gray-100 flex items-center gap-1">
-                                <MapPin size={10} /> {event.location}
-                              </div>
+          <div className="space-y-24">
+            {[
+              { 
+                title: "Planeamento Territorial e Urbanismo", 
+                projects: detailedProjects.filter(p => ['Planeamento', 'Urbano', 'Resiliência', 'Ordenamento', 'Logística', 'Mobilidade', 'Especial', 'Reordenamento'].some(c => p.category.includes(c))) 
+              },
+              { 
+                title: "Arquitetura e Fiscalização", 
+                projects: detailedProjects.filter(p => ['Arquitectura', 'Arquitetura', 'Edificações'].some(c => p.category.includes(c))) 
+              },
+              { 
+                title: "Capacitação Institucional", 
+                projects: detailedProjects.filter(p => ['Capacitação', 'Saneamento'].some(c => p.category.includes(c))) 
+              }
+            ].map((section, sIdx) => (
+              <div key={sIdx}>
+                <h2 className="text-3xl font-display font-bold text-vt-dark mb-10 border-b-2 border-gray-100 pb-4">{section.title}</h2>
+                <div className="grid gap-12">
+                  {section.projects.map((project, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-gray-100 grid lg:grid-cols-3 gap-12"
+                    >
+                      <div className="lg:col-span-2 space-y-6">
+                        <div className="flex gap-3">
+                          <span className="px-4 py-1 bg-orange-50 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{project.category}</span>
+                          <span className="px-4 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-bold uppercase tracking-widest">{project.year}</span>
+                        </div>
+                        <h2 className="text-3xl font-display font-bold leading-tight">{project.title}</h2>
+                        <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
+                        
+                        <button 
+                          onClick={() => setSelectedProject(project)}
+                          className="flex items-center gap-2 text-vt-orange font-bold hover:gap-3 transition-all cursor-pointer bg-orange-50 px-6 py-2 rounded-full w-fit mt-2"
+                        >
+                          Saiba Mais <ArrowRight size={18} />
+                        </button>
+                        
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+                          {project.stats.map(stat => (
+                            <div key={stat} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                              <p className="text-vt-dark font-bold text-sm">{stat}</p>
                             </div>
-                            <p className="text-sm text-gray-600 mb-4">{event.summary}</p>
-                            <div className="grid md:grid-cols-2 gap-2">
-                              {event.highlights.map((highlight: string) => (
-                                <div key={highlight} className="flex items-center gap-2 text-xs text-gray-500 bg-white p-2 rounded-lg border border-gray-50">
-                                  <ChevronRight size={12} className="text-vt-orange" />
-                                  {highlight}
+                          ))}
+                        </div>
+
+                        {project.events && (
+                          <div className="mt-8 space-y-6">
+                            <h4 className="font-display font-bold text-xl flex items-center gap-2">
+                              <FileText className="text-vt-orange" /> Documentação & Eventos
+                            </h4>
+                            <div className="space-y-4">
+                              {project.events.map((event: any, eIdx: number) => (
+                                <div key={eIdx} className="bg-orange-50/50 p-6 rounded-[2rem] border border-orange-100/50">
+                                  <div className="flex justify-between items-start mb-4 gap-4 flex-wrap">
+                                    <div>
+                                      <p className="text-xs font-bold text-vt-orange uppercase tracking-widest">{event.date}</p>
+                                      <h5 className="font-bold text-lg">{event.title}</h5>
+                                    </div>
+                                    <div className="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-gray-400 border border-gray-100 flex items-center gap-1">
+                                      <MapPin size={10} /> {event.location}
+                                    </div>
+                                  </div>
+                                  <p className="text-sm text-gray-600 mb-4">{event.summary}</p>
+                                  <div className="grid md:grid-cols-2 gap-2">
+                                    {event.highlights.map((highlight: string) => (
+                                      <div key={highlight} className="flex items-center gap-2 text-xs text-gray-500 bg-white p-2 rounded-lg border border-gray-50">
+                                        <ChevronRight size={12} className="text-vt-orange" />
+                                        {highlight}
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               ))}
                             </div>
                           </div>
-                        ))}
+                        )}
                       </div>
-                    </div>
-                  )}
-                </div>
 
-                <div className="space-y-6 border-l border-gray-100 pl-8 hidden lg:block">
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Cliente</p>
-                    <p className="font-bold text-gray-800">{project.client}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Localização</p>
-                    <p className="font-bold text-gray-800 flex items-center gap-2">
-                      <MapPin size={16} className="text-vt-orange" /> {project.location}
-                    </p>
-                  </div>
-                  <div className="pt-8">
-                    <div className="w-full h-32 bg-gray-50 rounded-3xl map-pattern opacity-50 flex items-center justify-center">
-                      <Compass className="text-vt-orange" size={32} />
-                    </div>
-                  </div>
+                      <div className="space-y-6 border-l border-gray-100 pl-8 hidden lg:block">
+                        <div>
+                          <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Cliente</p>
+                          <p className="font-bold text-gray-800">{project.client}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Localização</p>
+                          <p className="font-bold text-gray-800 flex items-center gap-2">
+                            <MapPin size={16} className="text-vt-orange" /> {project.location}
+                          </p>
+                        </div>
+                        <div className="pt-8">
+                          <div className="w-full h-32 bg-gray-50 rounded-3xl map-pattern opacity-50 flex items-center justify-center">
+                            <Compass className="text-vt-orange" size={32} />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -1186,87 +1242,126 @@ export default function App() {
             Trabalhos de <span className="text-vt-orange">Referência</span>
           </SectionHeading>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProjectCard 
-              category="Resiliência"
-              title="PEU - Cidade de Pemba"
-              client="Conselho Municipal de Pemba"
-              location="Pemba, Cabo Delgado"
-              year="2023 - 2024"
-              onSeeDetails={() => handleOpenProject('Pemba')}
-            />
-            <ProjectCard 
-              category="Logística"
-              title="PEUCN - Cidade de Nacala"
-              client="Conselho Municipal de Nacala"
-              location="Nacala, Nampula"
-              year="2025 - 2026"
-              onSeeDetails={() => handleOpenProject('Nacala')}
-            />
-            <ProjectCard 
-              category="Mobilidade"
-              title="PDMMU - Cidade da Beira"
-              client="Conselho Municipal da Beira"
-              location="Beira, Sofala"
-              year="2026 (Em Execução)"
-              onSeeDetails={() => handleOpenProject('PDMMU')}
-            />
-            <ProjectCard 
-              category="Reordenamento"
-              title="PPU - Macurrungo-Miquejo"
-              client="Conselho Municipal da Beira"
-              location="Bairro Macurrungo, Beira"
-              year="2025 - 2026"
-              onSeeDetails={() => handleOpenProject('Macurrungo')}
-            />
-            <ProjectCard 
-              category="Planeamento"
-              title="PEU - Mandlakazi"
-              client="Conselho Municipal de Mandlakazi"
-              location="Mandlakazi, Gaza"
-              year="2024 - 2025 (Concluído)"
-              onSeeDetails={() => handleOpenProject('Mandlakazi')}
-            />
-            <ProjectCard 
-              category="Ordenamento"
-              title="PDUTS - Distrito de Sussundenga"
-              client="Fundo Nacional de Desenvolvimento Sustentável"
-              location="Província de Manica"
-              year="2020 - 2021"
-              onSeeDetails={() => handleOpenProject('Sussundenga')}
-            />
-            <ProjectCard 
-              category="Arquitectura"
-              title="Projecto Residencial Matola Rio"
-              client="Cliente Particular"
-              location="Província de Maputo"
-              year="24 Meses"
-              onSeeDetails={() => handleOpenProject('Matola')}
-            />
-            <ProjectCard 
-              category="Urbano"
-              title="Modelo Territorial de Mucuache"
-              client="Conselho Municipal de Nampula"
-              location="Cidade de Nampula"
-              year="8 Meses"
-              onSeeDetails={() => handleOpenProject('Mucuache')}
-            />
-            <ProjectCard 
-              category="Especial"
-              title="Plano Geral de Urbanização - Lumbo"
-              client="ATOZ, Consultoria e Serviços"
-              location="Ilha de Moçambique"
-              year="3 Meses"
-              onSeeDetails={() => handleOpenProject('Lumbo')}
-            />
-             <ProjectCard 
-              category="Edificações"
-              title="Edifício Misto Central (12 Pisos)"
-              client="Grupo Loja das Damas"
-              location="Maputo, Bairro Central"
-              year="24 Meses"
-              onSeeDetails={() => handleOpenProject('Misto')}
-            />
+          <div className="space-y-16">
+            <div>
+              <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
+                <MapPin className="text-vt-orange" size={24} /> Planeamento Territorial e Urbanismo
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ProjectCard 
+                  category="Resiliência"
+                  title="PEU - Cidade de Pemba"
+                  client="Conselho Municipal de Pemba"
+                  location="Pemba, Cabo Delgado"
+                  year="2023 - 2024"
+                  onSeeDetails={() => handleOpenProject('Pemba')}
+                />
+                <ProjectCard 
+                  category="Logística"
+                  title="PEUCN - Cidade de Nacala"
+                  client="Conselho Municipal de Nacala"
+                  location="Nacala, Nampula"
+                  year="2025 - 2026"
+                  onSeeDetails={() => handleOpenProject('Nacala')}
+                />
+                <ProjectCard 
+                  category="Mobilidade"
+                  title="PDMMU - Cidade da Beira"
+                  client="Conselho Municipal da Beira"
+                  location="Beira, Sofala"
+                  year="2026 (Em Execução)"
+                  onSeeDetails={() => handleOpenProject('PDMMU')}
+                />
+                <ProjectCard 
+                  category="Reordenamento"
+                  title="PPU - Macurrungo-Miquejo"
+                  client="Conselho Municipal da Beira"
+                  location="Bairro Macurrungo, Beira"
+                  year="2025 - 2026"
+                  onSeeDetails={() => handleOpenProject('Macurrungo')}
+                />
+                <ProjectCard 
+                  category="Planeamento"
+                  title="PEU - Mandlakazi"
+                  client="Conselho Municipal de Mandlakazi"
+                  location="Mandlakazi, Gaza"
+                  year="2024 - 2025 (Concluído)"
+                  onSeeDetails={() => handleOpenProject('Mandlakazi')}
+                />
+                <ProjectCard 
+                  category="Ordenamento"
+                  title="PDUTS - Distrito de Sussundenga"
+                  client="Fundo Nacional de Desenvolvimento Sustentável"
+                  location="Província de Manica"
+                  year="2020 - 2021"
+                  onSeeDetails={() => handleOpenProject('Sussundenga')}
+                />
+                <ProjectCard 
+                  category="Urbano"
+                  title="Modelo Territorial de Mucuache"
+                  client="Conselho Municipal de Nampula"
+                  location="Cidade de Nampula"
+                  year="8 Meses"
+                  onSeeDetails={() => handleOpenProject('Mucuache')}
+                />
+                <ProjectCard 
+                  category="Especial"
+                  title="Plano Geral de Urbanização - Lumbo"
+                  client="ATOZ, Consultoria e Serviços"
+                  location="Ilha de Moçambique"
+                  year="3 Meses"
+                  onSeeDetails={() => handleOpenProject('Lumbo')}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
+                <Building2 className="text-vt-orange" size={24} /> Arquitetura e Fiscalização
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ProjectCard 
+                  category="Arquitectura"
+                  title="Projecto Residencial Matola Rio"
+                  client="Cliente Particular"
+                  location="Província de Maputo"
+                  year="24 Meses"
+                  onSeeDetails={() => handleOpenProject('Matola')}
+                />
+                <ProjectCard 
+                  category="Edificações"
+                  title="Edifício Misto Central (12 Pisos)"
+                  client="Grupo Loja das Damas"
+                  location="Maputo, Bairro Central"
+                  year="24 Meses"
+                  onSeeDetails={() => handleOpenProject('Misto')}
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
+                <Compass className="text-vt-orange" size={24} /> Capacitação Institucional
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ProjectCard 
+                  category="Capacitação"
+                  title="Capacitação Institucional APIEX"
+                  client="APIEX Moçambique"
+                  location="Maputo"
+                  year="2023"
+                  onSeeDetails={() => handleOpenProject('APIEX')}
+                />
+                <ProjectCard 
+                  category="Saneamento"
+                  title="Abordagem Participativa de Saneamento"
+                  client="Conselho Municipal da Ilha de Moçambique"
+                  location="Ilha de Moçambique"
+                  year="2022"
+                  onSeeDetails={() => handleOpenProject('Abordagem Participativa')}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 text-center">
