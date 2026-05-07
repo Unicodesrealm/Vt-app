@@ -438,6 +438,38 @@ export default function App() {
 
   const detailedProjects = [
     {
+      category: "Planeamento",
+      title: "PDUT de Mágoè e Cahora Bassa",
+      client: "Ministério da Terra e Ambiente / FNDS / Projecto PERS",
+      location: "Distritos de Mágoè e Cahora Bassa, Tete",
+      year: "2024",
+      description: "Elaboração do Plano Distrital de Uso da Terra de Mágoè e Revisão do Plano Distrital de Uso da Terra de Cahora Bassa. O projecto visa orientar o desenvolvimento socioeconómico sustentável dos distritos nos próximos 20 anos, assegurando a protecção ambiental, resiliência climática e a conservação de recursos naturais e ecossistemas (incluindo o Parque Nacional de Mágoè).",
+      stats: ["Planeamento Integrado", "Conservação Ambiental", "Resiliência Climática"],
+      events: [
+        {
+          date: "Julho 2024",
+          title: "Relatório Inicial (Inception Report)",
+          location: "Tete",
+          summary: "Fase de desencadeamento com análise e definição de abordagens sensíveis ao clima, planeamento incremental e multinível, focando nas áreas de conservação e inclusão comunitária.",
+          highlights: ["Abordagem Participativa", "Planeamento Incremental", "Responsividade ao Clima"]
+        },
+        {
+          date: "Etapa 2 & 3",
+          title: "Diagnóstico & Análise da Situação Actual",
+          location: "Mágoè e Cahora Bassa",
+          summary: "Sistematização de dados biofísicos, socioeconómicos e infra-estruturais, incluindo análises de risco ambiental e vulnerabilidade climática.",
+          highlights: ["Análise de Vulnerabilidade", "Recursos Hídricos", "Dinâmicas Sócio-Demográficas"]
+        },
+        {
+          date: "Etapa 5 & 6",
+          title: "Cenários & Proposta do Plano",
+          location: "Tete",
+          summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável e turismo responsável.",
+          highlights: ["Cenários de Desenvolvimento", "Desenho de Conservação", "Zoneamento Resiliente"]
+        }
+      ]
+    },
+    {
       category: "Planeamento & Resiliência",
       title: "PEUCP - Plano de Estrutura Urbana de Pemba",
       client: "Conselho Autárquico da Cidade de Pemba / Alto Comissariado Britânico",
@@ -1248,6 +1280,14 @@ export default function App() {
                 <MapPin className="text-vt-orange" size={24} /> Planeamento Territorial e Urbanismo
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ProjectCard 
+                  category="Planeamento"
+                  title="PDUT de Mágoè e Cahora Bassa"
+                  client="MTA / FNDS / Projecto PERS"
+                  location="Distritos de Mágoè e Cahora Bassa"
+                  year="2024"
+                  onSeeDetails={() => handleOpenProject('Cahora Bassa')}
+                />
                 <ProjectCard 
                   category="Resiliência"
                   title="PEU - Cidade de Pemba"
