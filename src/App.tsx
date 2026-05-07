@@ -943,6 +943,44 @@ export default function App() {
         </div>
       </section>
 
+      {/* Guia Rápido do Site */}
+      <section className="bg-gray-50 py-16 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold text-vt-orange uppercase tracking-widest mb-3">Bem-vindo</p>
+          <h2 className="text-3xl font-display font-bold text-vt-dark mb-10">Como explorar o nosso site</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+                <Compass size={20} />
+              </div>
+              <p className="font-bold text-vt-dark mb-2">Sobre & Missão</p>
+              <p className="text-gray-500 text-sm">Conheça a nossa história e o nosso compromisso com Moçambique.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+                <Building2 size={20} />
+              </div>
+              <p className="font-bold text-vt-dark mb-2">Nossos Serviços</p>
+              <p className="text-gray-500 text-sm">Explore as áreas de Planeamento, Arquitectura e Engenharias.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 cursor-pointer" onClick={() => { setView('portfolio'); window.scrollTo(0,0); }}>
+              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+                <FileText size={20} />
+              </div>
+              <p className="font-bold text-vt-dark mb-2">Portfólio Detalhado</p>
+              <p className="text-gray-500 text-sm">Estudos de caso e impacto real dos nossos principais projectos.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 cursor-pointer" onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}>
+              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+                <Phone size={20} />
+              </div>
+              <p className="font-bold text-vt-dark mb-2">Contacto Direto</p>
+              <p className="text-gray-500 text-sm">Localização da sede e canais de comunicação disponíveis.</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Partners section */}
       <motion.div 
         initial={{ opacity: 0 }}
