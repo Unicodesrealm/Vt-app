@@ -354,7 +354,8 @@ const locationsData = [
   { name: "Nampula - Rapale", coords: [-15.1333, 39.1167] as [number, number], projects: ["Monografia Vila Sede", "Obras Hidráulicas"] },
   { name: "Cabo Delgado - Mocímboa da Praia", coords: [-11.3500, 40.3500] as [number, number], projects: ["Assistência PDA", "Capacitação Liderança"] },
   { name: "Gaza - Mandlakazi", coords: [-24.7121, 33.8824] as [number, number], projects: ["Plano de Estrutura Urbana (PEUVM)", "Projecto de Drenagem Integrada", "Expansão Urbana Ligaguene"] },
-  { name: "Sofala - Beira", coords: [-19.8333, 34.8500] as [number, number], projects: ["Plano Director de Mobilidade Urbana", "Diagnóstico de Situação Actual", "Integração UN-Habitat"] }
+  { name: "Sofala - Beira", coords: [-19.8333, 34.8500] as [number, number], projects: ["Plano Director de Mobilidade Urbana", "Diagnóstico de Situação Actual", "Integração UN-Habitat"] },
+  { name: "Tete - Mágoè e Cahora Bassa", coords: [-15.8000, 32.7000] as [number, number], projects: ["PDUT de Mágoè e Cahora Bassa"] }
 ];
 
 const StepCard = ({ number, title, desc }: any) => (
