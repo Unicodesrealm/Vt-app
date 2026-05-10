@@ -99,7 +99,7 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
         >
           <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50">
             <h3 className="text-2xl font-display font-bold text-vt-dark">{title}</h3>
-            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors text-vt-orange">
+            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500 hover:text-gray-900">
               <X size={24} />
             </button>
           </div>
@@ -107,7 +107,7 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
             {content}
           </div>
           <div className="p-6 bg-gray-50 border-t border-gray-100 text-right">
-            <button onClick={onClose} className="bg-vt-dark text-white px-8 py-2 rounded-full font-bold hover:bg-vt-orange transition-colors">
+            <button onClick={onClose} className="bg-vt-dark text-white px-8 py-2 rounded-full font-bold hover:bg-gray-900 transition-colors">
               Fechar
             </button>
           </div>
@@ -149,13 +149,13 @@ const ImageCarousel = ({ images }: { images: { src: string, caption?: string }[]
         <>
           <button 
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-vt-orange hover:text-white z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-900 hover:text-white z-10"
           >
             <ChevronRight className="rotate-180" size={20} />
           </button>
           <button 
             onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-vt-orange hover:text-white z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-900 hover:text-white z-10"
           >
             <ChevronRight size={20} />
           </button>
@@ -229,7 +229,7 @@ const Navbar = ({ setView, currentView }: { setView: (v: 'home' | 'portfolio') =
                   handleNavClick(e, link.href);
                 }
               }}
-              className={`text-sm font-medium hover:text-vt-orange transition-colors ${scrolled ? 'text-vt-dark' : 'text-white/90'}`}
+              className={`text-sm font-medium hover:text-gray-500 transition-colors ${scrolled ? 'text-vt-dark' : 'text-white/90'}`}
             >
               {link.name}
             </a>
@@ -237,15 +237,15 @@ const Navbar = ({ setView, currentView }: { setView: (v: 'home' | 'portfolio') =
           <a 
             href="#contacto" 
             onClick={(e) => handleNavClick(e, '#contacto')}
-            className="bg-vt-orange text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-vt-dark hover:shadow-lg transition-all"
+            className="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 hover:shadow-lg transition-all"
           >
             Fale Connosco
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-vt-orange">
-          {isOpen ? <X size={28} /> : <Menu size={28} className={!scrolled && !isOpen ? 'text-white' : 'text-vt-orange'} />}
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-900">
+          {isOpen ? <X size={28} /> : <Menu size={28} className={!scrolled && !isOpen ? 'text-white' : 'text-gray-900'} />}
         </button>
       </div>
 
@@ -272,7 +272,7 @@ const Navbar = ({ setView, currentView }: { setView: (v: 'home' | 'portfolio') =
                     handleNavClick(e, link.href);
                   }
                 }}
-                className="text-lg font-medium text-vt-dark hover:text-vt-orange transition-colors"
+                className="text-lg font-medium text-vt-dark hover:text-gray-500 transition-colors"
               >
                 {link.name}
               </a>
@@ -314,14 +314,14 @@ const ServiceCard = ({ icon: Icon, title, items }: { icon: any, title: string, i
     whileHover={{ y: -10 }}
     className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group rounded-2xl"
   >
-    <div className="w-16 h-16 bg-orange-50 text-vt-orange flex items-center justify-center rounded-2xl mb-6 group-hover:bg-vt-orange group-hover:text-white transition-colors">
+    <div className="w-16 h-16 bg-gray-100 text-gray-800 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-gray-900 group-hover:text-white transition-colors">
       <Icon size={32} />
     </div>
     <h3 className="font-display text-2xl font-bold mb-4">{title}</h3>
     <ul className="space-y-3">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-2 text-gray-500 group-hover:text-gray-600 transition-colors">
-          <ChevronRight size={18} className="text-vt-orange mt-1 shrink-0" />
+          <ChevronRight size={18} className="text-gray-400 mt-1 shrink-0" />
           <span>{item}</span>
         </li>
       ))}
@@ -340,8 +340,8 @@ const ProjectCard = ({ category, title, client, location, year, onSeeDetails }: 
       {/* Blurred background content */}
       <div className="absolute inset-0 transition-all duration-500 group-hover:blur-md group-hover:scale-105 flex flex-col items-center justify-center p-8">
         <div className="absolute inset-0 map-pattern opacity-40"></div>
-        <Building2 className="text-vt-orange/50 mb-4 relative z-10" size={48} />
-        <span className="text-xs font-bold uppercase tracking-widest text-vt-orange bg-orange-50 px-3 py-1 rounded-full mb-2 relative z-10">{category}</span>
+        <Building2 className="text-gray-400 mb-4 relative z-10" size={48} />
+        <span className="text-xs font-bold uppercase tracking-widest text-vt-orange bg-gray-100 px-3 py-1 rounded-full mb-2 relative z-10">{category}</span>
         <h4 className="font-display text-xl font-bold text-gray-800 line-clamp-2 relative z-10">{title}</h4>
       </div>
 
@@ -364,7 +364,7 @@ const ProjectCard = ({ category, title, client, location, year, onSeeDetails }: 
           </div>
           <button 
             onClick={(e) => { e.stopPropagation(); onSeeDetails?.(); }}
-            className="mt-4 w-full py-2 bg-vt-orange text-white text-[10px] font-bold rounded-full hover:bg-white hover:text-vt-dark transition-colors border border-vt-orange cursor-pointer"
+            className="mt-4 w-full py-2 bg-gray-900 text-white text-[10px] font-bold rounded-full hover:bg-gray-100 hover:text-gray-900 transition-colors border border-gray-900 cursor-pointer"
           >
             Ver Detalhes
           </button>
@@ -386,10 +386,10 @@ const LocationTag: React.FC<{
       whileHover={{ scale: 1.05 }}
       onClick={onClick}
       className={`px-4 py-2 rounded-xl shadow-sm flex items-center gap-2 group cursor-pointer transition-all border ${
-        active ? 'bg-vt-orange border-vt-orange text-white shadow-vt-orange/40' : 'bg-white border-gray-100 text-gray-600 hover:border-vt-orange/30'
+        active ? 'bg-gray-900 border-gray-900 text-white shadow-gray-900/40' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
       }`}
     >
-      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? 'bg-white animate-pulse' : 'bg-vt-orange group-hover:animate-ping'}`}></div>
+      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? 'bg-white animate-pulse' : 'bg-gray-400 group-hover:bg-gray-900'}`}></div>
       <div className="flex flex-col items-start leading-tight">
         {district ? (
           <>
@@ -423,8 +423,8 @@ const locationsData = [
 ];
 
 const StepCard = ({ number, title, desc }: any) => (
-  <div className="relative flex flex-col gap-4 p-8 bg-white border border-gray-100 rounded-3xl group transition-all hover:bg-vt-orange/5">
-    <div className="absolute -top-4 -left-4 w-12 h-12 bg-vt-orange text-white flex items-center justify-center rounded-2xl font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+  <div className="relative flex flex-col gap-4 p-8 bg-white border border-gray-100 rounded-3xl group transition-all hover:bg-gray-900/5">
+    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gray-900 text-white flex items-center justify-center rounded-2xl font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
       {number}
     </div>
     <h3 className="font-display text-xl font-bold mt-2">{title}</h3>
@@ -484,16 +484,16 @@ export default function App() {
         <p className="font-bold text-vt-dark">Integridade Técnica e Governação</p>
         <p>Operamos sob os mais altos padrões de ética profissional moçambicanos e internacionais. O nosso programa de compliance foca em:</p>
         <div className="grid grid-cols-1 gap-4">
-          <div className="flex gap-4 p-4 bg-orange-50 rounded-2xl">
-            <Scale className="text-vt-orange shrink-0" />
+          <div className="flex gap-4 p-4 bg-gray-100 rounded-2xl">
+            <Scale className="text-gray-700 shrink-0" />
             <p className="text-sm">Transparência total em concursos públicos e processos de aquisição.</p>
           </div>
-          <div className="flex gap-4 p-4 bg-orange-50 rounded-2xl">
-            <ShieldCheck className="text-vt-orange shrink-0" />
+          <div className="flex gap-4 p-4 bg-gray-100 rounded-2xl">
+            <ShieldCheck className="text-gray-700 shrink-0" />
             <p className="text-sm">Riguroso controle de qualidade técnica e verificação de normas legais.</p>
           </div>
-          <div className="flex gap-4 p-4 bg-orange-50 rounded-2xl">
-            <FileText className="text-vt-orange shrink-0" />
+          <div className="flex gap-4 p-4 bg-gray-100 rounded-2xl">
+            <FileText className="text-gray-700 shrink-0" />
             <p className="text-sm">Adesão estrita ao Regulamento de Licenciamento de Actividade Comercial e Ambiental.</p>
           </div>
         </div>
@@ -795,7 +795,7 @@ export default function App() {
               <div className="space-y-4">
                 <button 
                   onClick={() => { setView('home'); window.scrollTo(0,0); }}
-                  className="text-vt-orange font-bold flex items-center gap-2 mb-4 hover:gap-3 transition-all cursor-pointer"
+                  className="text-white/70 hover:text-white font-bold flex items-center gap-2 mb-4 hover:gap-3 transition-all cursor-pointer"
                 >
                   <ArrowRight className="rotate-180" /> Voltar ao Início
                 </button>
@@ -840,7 +840,7 @@ export default function App() {
                     >
                       <div className="lg:col-span-2 space-y-6">
                         <div className="flex gap-3">
-                          <span className="px-4 py-1 bg-orange-50 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{project.category}</span>
+                          <span className="px-4 py-1 bg-gray-100 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{project.category}</span>
                           <span className="px-4 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-bold uppercase tracking-widest">{project.year}</span>
                         </div>
                         <h2 className="text-3xl font-display font-bold leading-tight">{project.title}</h2>
@@ -848,7 +848,7 @@ export default function App() {
                         
                         <button 
                           onClick={() => setSelectedProject(project)}
-                          className="flex items-center gap-2 text-vt-orange font-bold hover:gap-3 transition-all cursor-pointer bg-orange-50 px-6 py-2 rounded-full w-fit mt-2"
+                          className="flex items-center gap-2 text-white font-bold hover:gap-3 transition-all cursor-pointer bg-gray-900 hover:bg-gray-800 px-6 py-2 rounded-full w-fit mt-2"
                         >
                           Saiba Mais <ArrowRight size={18} />
                         </button>
@@ -864,11 +864,11 @@ export default function App() {
                         {project.events && (
                           <div className="mt-8 space-y-6">
                             <h4 className="font-display font-bold text-xl flex items-center gap-2">
-                              <FileText className="text-vt-orange" /> Documentação & Eventos
+                              <FileText className="text-gray-800" /> Documentação & Eventos
                             </h4>
                             <div className="space-y-4">
                               {project.events.map((event: any, eIdx: number) => (
-                                <div key={eIdx} className="bg-orange-50/50 p-6 rounded-[2rem] border border-orange-100/50">
+                                <div key={eIdx} className="bg-gray-100/50 p-6 rounded-[2rem] border border-orange-100/50">
                                   {event.images && event.images.length > 0 ? (
                                     <ImageCarousel images={event.images} />
                                   ) : event.image ? (
@@ -889,7 +889,7 @@ export default function App() {
                                   <div className="grid md:grid-cols-2 gap-2">
                                     {event.highlights.map((highlight: string) => (
                                       <div key={highlight} className="flex items-center gap-2 text-xs text-gray-500 bg-white p-2 rounded-lg border border-gray-50">
-                                        <ChevronRight size={12} className="text-vt-orange" />
+                                        <ChevronRight size={12} className="text-gray-800" />
                                         {highlight}
                                       </div>
                                     ))}
@@ -915,12 +915,12 @@ export default function App() {
                         <div>
                           <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Localização</p>
                           <p className="font-bold text-gray-800 flex items-center gap-2">
-                            <MapPin size={16} className="text-vt-orange" /> {project.location}
+                            <MapPin size={16} className="text-gray-800" /> {project.location}
                           </p>
                         </div>
                         <div className="pt-8">
                           <div className="w-full h-32 bg-gray-50 rounded-3xl map-pattern opacity-50 flex items-center justify-center">
-                            <Compass className="text-vt-orange" size={32} />
+                            <Compass className="text-gray-800" size={32} />
                           </div>
                         </div>
                       </div>
@@ -940,13 +940,13 @@ export default function App() {
           content={
             <div className="space-y-6">
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-orange-100 text-vt-orange rounded-full text-[10px] font-bold uppercase tracking-wider">{selectedProject?.category}</span>
+                <span className="px-3 py-1 bg-gray-200 text-vt-orange rounded-full text-[10px] font-bold uppercase tracking-wider">{selectedProject?.category}</span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-500 rounded-full text-[10px] font-bold uppercase tracking-wider">{selectedProject?.year}</span>
               </div>
               
               <div className="space-y-4">
                 <h4 className="font-bold text-vt-dark flex items-center gap-2 border-b border-gray-100 pb-2">
-                  <Target size={18} className="text-vt-orange" /> Objectivo do Projecto
+                  <Target size={18} className="text-gray-800" /> Objectivo do Projecto
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
                   {selectedProject?.description}
@@ -956,11 +956,11 @@ export default function App() {
               {selectedProject?.pillars && (
                 <div className="space-y-4">
                   <h4 className="font-bold text-vt-dark flex items-center gap-2 border-b border-gray-100 pb-2">
-                    <Building2 size={18} className="text-vt-orange" /> Eixos de Intervenção
+                    <Building2 size={18} className="text-gray-800" /> Eixos de Intervenção
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {selectedProject.pillars.map((pillar: any) => (
-                      <div key={pillar.title} className="bg-orange-50/30 p-3 rounded-xl border border-orange-100/50">
+                      <div key={pillar.title} className="bg-gray-100/30 p-3 rounded-xl border border-orange-100/50">
                         <p className="font-bold text-xs text-vt-dark mb-1">{pillar.title}</p>
                         <p className="text-[10px] text-gray-500 leading-relaxed">{pillar.desc}</p>
                       </div>
@@ -972,12 +972,12 @@ export default function App() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <h4 className="font-bold text-vt-dark flex items-center gap-2 border-b border-gray-100 pb-2">
-                    <Users size={18} className="text-vt-orange" /> Detalhes Técnicos
+                    <Users size={18} className="text-gray-800" /> Detalhes Técnicos
                   </h4>
                   <ul className="space-y-2">
                     {selectedProject?.stats.map((stat: string) => (
                       <li key={stat} className="flex items-center gap-2 text-sm text-gray-600">
-                        <ChevronRight size={14} className="text-vt-orange" />
+                        <ChevronRight size={14} className="text-gray-800" />
                         {stat}
                       </li>
                     ))}
@@ -985,7 +985,7 @@ export default function App() {
                 </div>
                 <div className="space-y-4">
                   <h4 className="font-bold text-vt-dark flex items-center gap-2 border-b border-gray-100 pb-2">
-                    <MapPin size={18} className="text-vt-orange" /> Localização & Cliente
+                    <MapPin size={18} className="text-gray-800" /> Localização & Cliente
                   </h4>
                   <div className="space-y-2 text-sm">
                     <p><span className="text-gray-400 font-medium">Cliente:</span> <span className="text-gray-700 font-bold">{selectedProject?.client}</span></p>
@@ -997,7 +997,7 @@ export default function App() {
               {selectedProject?.events && (
                 <div className="space-y-4">
                   <h4 className="font-bold text-vt-dark flex items-center gap-2 border-b border-gray-100 pb-2">
-                    <FileText size={18} className="text-vt-orange" /> Marco de Implementação
+                    <FileText size={18} className="text-gray-800" /> Marco de Implementação
                   </h4>
                   {selectedProject.events.map((event: any, eIdx: number) => (
                     <div key={eIdx} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
@@ -1047,8 +1047,8 @@ export default function App() {
              </div>
           </div>
           {/* Radical Gradients */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-vt-orange/30 to-transparent blur-3xl"></div>
-          <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-vt-orange/10 rounded-full blur-[120px]"></div>
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-300/30 to-transparent blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-gray-200/50 rounded-full blur-[120px]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
@@ -1129,7 +1129,7 @@ export default function App() {
             <div className="w-[450px] h-[550px] bg-gradient-to-tr from-vt-orange/20 to-transparent border-2 border-white/20 rounded-[4rem] relative overflow-hidden group">
               <div className="absolute inset-4 border border-white/10 rounded-[3.5rem] overflow-hidden">
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-xs flex items-center justify-center p-12 text-center flex-col gap-6">
-                   <div className="w-24 h-24 bg-vt-orange rounded-3xl flex items-center justify-center text-white rotate-12">
+                   <div className="w-24 h-24 bg-gray-900 rounded-3xl flex items-center justify-center text-white rotate-12">
                       <Compass size={56} />
                    </div>
                    <h3 className="text-white font-display text-2xl font-bold">Inovação e Qualidade Técnica</h3>
@@ -1150,28 +1150,28 @@ export default function App() {
           <h2 className="text-3xl font-display font-bold text-vt-dark mb-10">Como explorar o nosso site</h2>
           <div className="grid md:grid-cols-4 gap-6">
             <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+              <div className="w-10 h-10 bg-gray-100 text-gray-800 flex items-center justify-center rounded-xl mb-4 mx-auto">
                 <Compass size={20} />
               </div>
               <p className="font-bold text-vt-dark mb-2">Sobre & Missão</p>
               <p className="text-gray-500 text-sm">Conheça a nossa história e o nosso compromisso com Moçambique.</p>
             </motion.div>
             <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+              <div className="w-10 h-10 bg-gray-100 text-gray-800 flex items-center justify-center rounded-xl mb-4 mx-auto">
                 <Building2 size={20} />
               </div>
               <p className="font-bold text-vt-dark mb-2">Nossos Serviços</p>
               <p className="text-gray-500 text-sm">Explore as áreas de Planeamento, Arquitectura e Engenharias.</p>
             </motion.div>
             <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 cursor-pointer" onClick={() => { setView('portfolio'); window.scrollTo(0,0); }}>
-              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+              <div className="w-10 h-10 bg-gray-100 text-gray-800 flex items-center justify-center rounded-xl mb-4 mx-auto">
                 <FileText size={20} />
               </div>
               <p className="font-bold text-vt-dark mb-2">Portfólio Detalhado</p>
               <p className="text-gray-500 text-sm">Estudos de caso e impacto real dos nossos principais projectos.</p>
             </motion.div>
             <motion.div whileHover={{ y: -5 }} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 cursor-pointer" onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}>
-              <div className="w-10 h-10 bg-orange-50 text-vt-orange flex items-center justify-center rounded-xl mb-4 mx-auto">
+              <div className="w-10 h-10 bg-gray-100 text-gray-800 flex items-center justify-center rounded-xl mb-4 mx-auto">
                 <Phone size={20} />
               </div>
               <p className="font-bold text-vt-dark mb-2">Contacto Direto</p>
@@ -1235,7 +1235,7 @@ export default function App() {
                   whileHover={{ x: 10 }}
                   className="flex gap-6 items-start"
                 >
-                  <div className="shrink-0 w-14 h-14 bg-vt-orange text-white flex items-center justify-center rounded-2xl shadow-lg">
+                  <div className="shrink-0 w-14 h-14 bg-gray-900 text-white flex items-center justify-center rounded-2xl shadow-lg">
                     <Target size={28} />
                   </div>
                   <div>
@@ -1349,7 +1349,7 @@ export default function App() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {['Sustentável', 'Realista', 'Pragmático', 'Participativo'].map(tag => (
-                    <span key={tag} className="px-4 py-1.5 border border-vt-orange/50 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{tag}</span>
+                    <span key={tag} className="px-4 py-1.5 border border-gray-300 text-gray-700 rounded-full text-xs font-bold uppercase tracking-widest">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -1380,7 +1380,7 @@ export default function App() {
           <div className="space-y-16">
             <div>
               <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
-                <MapPin className="text-vt-orange" size={24} /> Planeamento Territorial e Urbanismo
+                <MapPin className="text-gray-800" size={24} /> Planeamento Territorial e Urbanismo
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <ProjectCard 
@@ -1460,7 +1460,7 @@ export default function App() {
 
             <div>
               <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
-                <Building2 className="text-vt-orange" size={24} /> Arquitetura e Fiscalização
+                <Building2 className="text-gray-800" size={24} /> Arquitetura e Fiscalização
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <ProjectCard 
@@ -1484,7 +1484,7 @@ export default function App() {
 
             <div>
               <h3 className="text-2xl font-display font-bold text-vt-dark mb-8 border-b border-gray-100 pb-3 flex items-center gap-3">
-                <Compass className="text-vt-orange" size={24} /> Capacitação Institucional
+                <Compass className="text-gray-800" size={24} /> Capacitação Institucional
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <ProjectCard 
@@ -1510,7 +1510,7 @@ export default function App() {
           <div className="mt-16 text-center">
             <button 
               onClick={() => { setView('portfolio'); window.scrollTo(0,0); }}
-              className="inline-flex items-center gap-2 text-vt-dark font-bold text-lg hover:text-vt-orange transition-colors group"
+              className="inline-flex items-center gap-2 text-vt-dark font-bold text-lg hover:text-gray-500 transition-colors group"
             >
               Explorar Todos os Projetos Detalhados <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -1543,7 +1543,7 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="p-8 bg-orange-50 rounded-[2rem] border border-orange-100"
+                  className="p-8 bg-gray-100 rounded-[2rem] border border-orange-100"
                 >
                   <h4 className="font-display font-bold text-xl mb-4 flex items-center gap-2 text-vt-orange">
                     <MapPin size={20} /> Projectos em {selectedLoc.name.split(' - ')[1] || selectedLoc.name}
@@ -1551,14 +1551,14 @@ export default function App() {
                   <ul className="space-y-3">
                     {selectedLoc.projects.map(proj => (
                       <li key={proj} className="flex items-center gap-3 text-sm text-gray-700 bg-white/60 p-3 rounded-xl border border-white">
-                        <ChevronRight size={14} className="text-vt-orange" />
+                        <ChevronRight size={14} className="text-gray-800" />
                         {proj}
                       </li>
                     ))}
                   </ul>
                   <button 
                     onClick={() => setView('portfolio')}
-                    className="mt-6 text-vt-orange font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
+                    className="mt-6 text-gray-900 font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
                   >
                     Ver detalhes no portfólio <ArrowRight size={16} />
                   </button>
@@ -1609,7 +1609,7 @@ export default function App() {
                 </MapContainer>
               </div>
               {/* Decorative background circle */}
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-vt-orange/10 rounded-full blur-3xl -z-0"></div>
+              <div className="absolute -top-12 -right-12 w-64 h-64 bg-gray-200/50 rounded-full blur-3xl -z-0"></div>
             </div>
           </div>
         </div>
@@ -1631,7 +1631,7 @@ export default function App() {
               className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100"
             >
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-orange-50 text-vt-orange flex items-center justify-center rounded-2xl">
+                <div className="w-12 h-12 bg-gray-100 text-vt-orange flex items-center justify-center rounded-2xl">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -1643,7 +1643,7 @@ export default function App() {
                  Av. Eduardo mondlane, nº 1234, 1º <br /> Andar Esquerdo
               </p>
               <div className="space-y-4 pt-6 border-t border-gray-50">
-                <a href="tel:+258843128808" className="flex items-center gap-3 text-vt-dark hover:text-vt-orange transition-colors">
+                <a href="tel:+258843128808" className="flex items-center gap-3 text-vt-dark hover:text-gray-500 transition-colors">
                   <Phone size={18} /> +258 843 128 808
                 </a>
               </div>
@@ -1655,7 +1655,7 @@ export default function App() {
               className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100"
             >
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-orange-50 text-vt-orange flex items-center justify-center rounded-2xl">
+                <div className="w-12 h-12 bg-gray-100 text-vt-orange flex items-center justify-center rounded-2xl">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -1667,7 +1667,7 @@ export default function App() {
                 Av. da Malhangale, rua da Manica, nº 1361, casa nº 188, 1º Andar Direito
               </p>
               <div className="space-y-4 pt-6 border-t border-gray-50">
-                <a href="tel:+258843128807" className="flex items-center gap-3 text-vt-dark hover:text-vt-orange transition-colors">
+                <a href="tel:+258843128807" className="flex items-center gap-3 text-vt-dark hover:text-gray-500 transition-colors">
                   <Phone size={18} /> +258 843 128 807
                 </a>
               </div>
@@ -1690,13 +1690,13 @@ export default function App() {
               <div className="space-y-6">
                 <a href="mailto:geral@vt.co.mz" className="group block">
                   <p className="text-white/40 text-xs uppercase tracking-widest mb-1">E-mail Comercial</p>
-                  <p className="text-lg font-medium group-hover:text-vt-orange transition-colors flex items-center gap-2">
+                  <p className="text-lg font-medium group-hover:text-gray-500 transition-colors flex items-center gap-2">
                     <Mail size={18} /> geral@vt.co.mz
                   </p>
                 </a>
                 <a href="http://www.vt.co.mz" className="group block">
                   <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Website Oficial</p>
-                  <p className="text-lg font-medium group-hover:text-vt-orange transition-colors flex items-center gap-2">
+                  <p className="text-lg font-medium group-hover:text-gray-500 transition-colors flex items-center gap-2">
                     <Globe size={18} /> www.vt.co.mz
                   </p>
                 </a>
@@ -1720,9 +1720,9 @@ export default function App() {
           </div>
           
           <div className="flex gap-8 text-sm font-medium text-gray-500">
-            <button onClick={openPrivacy} className="hover:text-vt-orange transition-colors cursor-pointer">Privacidade</button>
-            <button onClick={openTerms} className="hover:text-vt-orange transition-colors cursor-pointer">Termos de Uso</button>
-            <button onClick={openCompliance} className="hover:text-vt-orange transition-colors cursor-pointer">Compliance</button>
+            <button onClick={openPrivacy} className="hover:text-gray-500 transition-colors cursor-pointer">Privacidade</button>
+            <button onClick={openTerms} className="hover:text-gray-500 transition-colors cursor-pointer">Termos de Uso</button>
+            <button onClick={openCompliance} className="hover:text-gray-500 transition-colors cursor-pointer">Compliance</button>
           </div>
 
           <p className="text-xs text-gray-400 max-w-xs text-center md:text-right italic">
