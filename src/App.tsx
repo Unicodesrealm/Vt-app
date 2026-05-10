@@ -99,7 +99,7 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
         >
           <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50">
             <h3 className="text-2xl font-display font-bold text-vt-dark">{title}</h3>
-            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500 hover:text-gray-900">
+            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500 hover:text-black">
               <X size={24} />
             </button>
           </div>
@@ -107,7 +107,7 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
             {content}
           </div>
           <div className="p-6 bg-gray-50 border-t border-gray-100 text-right">
-            <button onClick={onClose} className="bg-vt-dark text-white px-8 py-2 rounded-full font-bold hover:bg-gray-900 transition-colors">
+            <button onClick={onClose} className="bg-vt-dark text-white px-8 py-2 rounded-full font-bold hover:bg-black transition-colors">
               Fechar
             </button>
           </div>
@@ -149,13 +149,13 @@ const ImageCarousel = ({ images }: { images: { src: string, caption?: string }[]
         <>
           <button 
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-900 hover:text-white z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black hover:text-white z-10"
           >
             <ChevronRight className="rotate-180" size={20} />
           </button>
           <button 
             onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-900 hover:text-white z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black hover:text-white z-10"
           >
             <ChevronRight size={20} />
           </button>
@@ -237,15 +237,15 @@ const Navbar = ({ setView, currentView }: { setView: (v: 'home' | 'portfolio') =
           <a 
             href="#contacto" 
             onClick={(e) => handleNavClick(e, '#contacto')}
-            className="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 hover:shadow-lg transition-all"
+            className="bg-vt-orange text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-vt-dark hover:shadow-lg transition-all"
           >
             Fale Connosco
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-900">
-          {isOpen ? <X size={28} /> : <Menu size={28} className={!scrolled && !isOpen ? 'text-white' : 'text-gray-900'} />}
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-black">
+          {isOpen ? <X size={28} /> : <Menu size={28} className={!scrolled && !isOpen ? 'text-white' : 'text-black'} />}
         </button>
       </div>
 
@@ -314,7 +314,7 @@ const ServiceCard = ({ icon: Icon, title, items }: { icon: any, title: string, i
     whileHover={{ y: -10 }}
     className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group rounded-2xl"
   >
-    <div className="w-16 h-16 bg-gray-100 text-gray-800 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+    <div className="w-16 h-16 bg-gray-100 text-gray-800 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-black group-hover:text-white transition-colors">
       <Icon size={32} />
     </div>
     <h3 className="font-display text-2xl font-bold mb-4">{title}</h3>
@@ -364,7 +364,7 @@ const ProjectCard = ({ category, title, client, location, year, onSeeDetails }: 
           </div>
           <button 
             onClick={(e) => { e.stopPropagation(); onSeeDetails?.(); }}
-            className="mt-4 w-full py-2 bg-gray-900 text-white text-[10px] font-bold rounded-full hover:bg-gray-100 hover:text-gray-900 transition-colors border border-gray-900 cursor-pointer"
+            className="mt-4 w-full py-2 bg-black text-white text-[10px] font-bold rounded-full hover:bg-gray-200 hover:text-black transition-colors border border-black cursor-pointer"
           >
             Ver Detalhes
           </button>
@@ -386,10 +386,10 @@ const LocationTag: React.FC<{
       whileHover={{ scale: 1.05 }}
       onClick={onClick}
       className={`px-4 py-2 rounded-xl shadow-sm flex items-center gap-2 group cursor-pointer transition-all border ${
-        active ? 'bg-gray-900 border-gray-900 text-white shadow-gray-900/40' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
+        active ? 'bg-black border-black text-white shadow-black/40' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
       }`}
     >
-      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? 'bg-white animate-pulse' : 'bg-gray-400 group-hover:bg-gray-900'}`}></div>
+      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? 'bg-white animate-pulse' : 'bg-gray-400 group-hover:bg-black'}`}></div>
       <div className="flex flex-col items-start leading-tight">
         {district ? (
           <>
@@ -423,8 +423,8 @@ const locationsData = [
 ];
 
 const StepCard = ({ number, title, desc }: any) => (
-  <div className="relative flex flex-col gap-4 p-8 bg-white border border-gray-100 rounded-3xl group transition-all hover:bg-gray-900/5">
-    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gray-900 text-white flex items-center justify-center rounded-2xl font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+  <div className="relative flex flex-col gap-4 p-8 bg-white border border-gray-100 rounded-3xl group transition-all hover:bg-black/5">
+    <div className="absolute -top-4 -left-4 w-12 h-12 bg-black text-white flex items-center justify-center rounded-2xl font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
       {number}
     </div>
     <h3 className="font-display text-xl font-bold mt-2">{title}</h3>
@@ -848,7 +848,7 @@ export default function App() {
                         
                         <button 
                           onClick={() => setSelectedProject(project)}
-                          className="flex items-center gap-2 text-white font-bold hover:gap-3 transition-all cursor-pointer bg-gray-900 hover:bg-gray-800 px-6 py-2 rounded-full w-fit mt-2"
+                          className="flex items-center gap-2 text-white font-bold hover:gap-3 transition-all cursor-pointer bg-black hover:bg-gray-800 px-6 py-2 rounded-full w-fit mt-2"
                         >
                           Saiba Mais <ArrowRight size={18} />
                         </button>
@@ -1129,7 +1129,7 @@ export default function App() {
             <div className="w-[450px] h-[550px] bg-gradient-to-tr from-vt-orange/20 to-transparent border-2 border-white/20 rounded-[4rem] relative overflow-hidden group">
               <div className="absolute inset-4 border border-white/10 rounded-[3.5rem] overflow-hidden">
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-xs flex items-center justify-center p-12 text-center flex-col gap-6">
-                   <div className="w-24 h-24 bg-gray-900 rounded-3xl flex items-center justify-center text-white rotate-12">
+                   <div className="w-24 h-24 bg-black rounded-3xl flex items-center justify-center text-white rotate-12">
                       <Compass size={56} />
                    </div>
                    <h3 className="text-white font-display text-2xl font-bold">Inovação e Qualidade Técnica</h3>
@@ -1235,7 +1235,7 @@ export default function App() {
                   whileHover={{ x: 10 }}
                   className="flex gap-6 items-start"
                 >
-                  <div className="shrink-0 w-14 h-14 bg-gray-900 text-white flex items-center justify-center rounded-2xl shadow-lg">
+                  <div className="shrink-0 w-14 h-14 bg-black text-white flex items-center justify-center rounded-2xl shadow-lg">
                     <Target size={28} />
                   </div>
                   <div>
@@ -1558,7 +1558,7 @@ export default function App() {
                   </ul>
                   <button 
                     onClick={() => setView('portfolio')}
-                    className="mt-6 text-gray-900 font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
+                    className="mt-6 text-black font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
                   >
                     Ver detalhes no portfólio <ArrowRight size={16} />
                   </button>
