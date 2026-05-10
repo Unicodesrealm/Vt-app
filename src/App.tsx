@@ -8,6 +8,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './components/Logo';
 import logoPath from './assets/logo-vt.png';
 import cahoraBassaImg from './assets/cahora-bassa.jpeg';
+import cbMap1 from './assets/Cahora Bassa Grupo 01_ Cenário de Desenvolvimento Turístico.jpeg';
+import cbMap2 from './assets/Cahora Bassa Grupo 02_ Cenário de Desenvolvimento Agropecuário.jpeg';
+import cbMap3 from './assets/Cahora Bassa Grupo 03_ Cenário de Desenvolvimento Pesqueiro.jpeg';
+import mgMap1 from './assets/Mágoè Grupo 01_ Cenário de Desenvolvimento Turístico.jpeg';
+import mgMap2 from './assets/Mágoè Grupo 02_ Cenário de Desenvolvimento Pesqueiro.jpeg';
+import mgMap3 from './assets/Mágoè Grupo 03_ Cenário de Desenvolvimento Agropecuário.jpeg';
+import zmbMap1 from './assets/Zumbo-sede_ Cenário de Desenvolvimento Pesqueiro.jpeg';
 
 // Smart Image Component that falls back to SVG Logo on error
 const ScalableLogo: React.FC<{ className?: string, scrolled: boolean }> = ({ className, scrolled }) => {
@@ -107,6 +114,55 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
         </motion.div>
       </div>
     </AnimatePresence>
+  );
+};
+
+const ImageCarousel = ({ images }: { images: string[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  return (
+    <div className="relative mb-6 rounded-2xl overflow-hidden shadow-sm group bg-gray-100 flex items-center justify-center">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="w-full h-auto max-h-[500px] object-contain"
+          alt="Cenário"
+        />
+      </AnimatePresence>
+      
+      {images.length > 1 && (
+        <>
+          <button 
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-vt-orange hover:text-white z-10"
+          >
+            <ChevronRight className="rotate-180" size={20} />
+          </button>
+          <button 
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 backdrop-blur text-vt-dark rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-vt-orange hover:text-white z-10"
+          >
+            <ChevronRight size={20} />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+            {images.map((_, idx) => (
+              <div 
+                key={idx} 
+                className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-white w-4' : 'bg-white/50'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
@@ -465,8 +521,8 @@ export default function App() {
         {
           date: "Etapa 5 & 6",
           title: "Workshop de Cenários & Proposta do Plano",
-          location: "Cahora Bassa",
-          image: cahoraBassaImg,
+          location: "Cahora Bassa e Mágoè",
+          images: [cahoraBassaImg, cbMap1, cbMap2, cbMap3, mgMap1, mgMap2, mgMap3, zmbMap1],
           summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável e turismo responsável.",
           highlights: ["Cenários de Desenvolvimento", "Desenho de Conservação", "Zoneamento Resiliente"]
         }
@@ -789,11 +845,13 @@ export default function App() {
                             <div className="space-y-4">
                               {project.events.map((event: any, eIdx: number) => (
                                 <div key={eIdx} className="bg-orange-50/50 p-6 rounded-[2rem] border border-orange-100/50">
-                                  {event.image && (
+                                  {event.images && event.images.length > 0 ? (
+                                    <ImageCarousel images={event.images} />
+                                  ) : event.image ? (
                                     <div className="mb-6 rounded-2xl overflow-hidden shadow-sm">
                                       <img src={event.image} alt={event.title} className="w-full h-auto max-h-64 object-cover hover:scale-105 transition-transform duration-500" />
                                     </div>
-                                  )}
+                                  ) : null}
                                   <div className="flex justify-between items-start mb-4 gap-4 flex-wrap">
                                     <div>
                                       <p className="text-xs font-bold text-vt-orange uppercase tracking-widest">{event.date}</p>
