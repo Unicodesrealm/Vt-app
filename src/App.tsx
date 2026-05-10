@@ -526,37 +526,28 @@ export default function App() {
           highlights: ["Análise de Vulnerabilidade", "Recursos Hídricos", "Dinâmicas Sócio-Demográficas"]
         },
         {
-          date: "Etapa 5 & 6",
-          title: "Workshop de Cenários & Proposta do Plano",
+          date: "Etapa 5",
+          title: "Workshop de Cenários",
           location: "Tete",
           image: cahoraBassaImg,
-          summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável e turismo responsável.",
+          summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável.",
           highlights: ["Consulta Pública", "Desenho Participativo", "Validação"]
         },
         {
           date: "Etapa 6",
-          title: "Cenários de Desenvolvimento: Cahora Bassa",
-          location: "Cahora Bassa",
+          title: "Proposta do Plano: Cenários de Desenvolvimento",
+          location: "Cahora Bassa, Mágoè e Zumbo",
           images: [
             { src: cbMap1, caption: "Cahora Bassa: Cenário Turístico" },
             { src: cbMap2, caption: "Cahora Bassa: Cenário Agropecuário" },
-            { src: cbMap3, caption: "Cahora Bassa: Cenário Pesqueiro" }
-          ],
-          summary: "Mapas de propostas de desenvolvimento focado nos sectores Turístico, Agropecuário e Pesqueiro.",
-          highlights: ["Turístico", "Agropecuário", "Pesqueiro"]
-        },
-        {
-          date: "Etapa 6",
-          title: "Cenários de Desenvolvimento: Mágoè e Zumbo",
-          location: "Mágoè / Zumbo",
-          images: [
+            { src: cbMap3, caption: "Cahora Bassa: Cenário Pesqueiro" },
             { src: mgMap1, caption: "Mágoè: Cenário Turístico" },
             { src: mgMap2, caption: "Mágoè: Cenário Pesqueiro" },
             { src: mgMap3, caption: "Mágoè: Cenário Agropecuário" },
             { src: zmbMap1, caption: "Zumbo-Sede: Cenário Pesqueiro" }
           ],
-          summary: "Mapas de propostas de desenvolvimento focado nos sectores estratégicos para Mágoè e Zumbo-Sede.",
-          highlights: ["Turístico", "Pesqueiro", "Agropecuário"]
+          summary: "Mapas de propostas de desenvolvimento focado nos sectores Turístico, Agropecuário e Pesqueiro.",
+          highlights: ["Turístico", "Agropecuário", "Pesqueiro"]
         }
       ]
     },
