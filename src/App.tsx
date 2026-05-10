@@ -506,6 +506,7 @@ export default function App() {
       category: "Planeamento",
       title: "PDUT de Mágoè e Cahora Bassa",
       client: "Ministério da Terra e Ambiente / FNDS / Projecto PERS",
+      partner: "TSPA",
       location: "Distritos de Mágoè e Cahora Bassa, Tete",
       year: "2024",
       description: "Elaboração do Plano Distrital de Uso da Terra de Mágoè e Revisão do Plano Distrital de Uso da Terra de Cahora Bassa. O projecto visa orientar o desenvolvimento socioeconómico sustentável dos distritos nos próximos 20 anos, assegurando a protecção ambiental, resiliência climática e a conservação de recursos naturais e ecossistemas (incluindo o Parque Nacional de Mágoè).",
@@ -527,10 +528,10 @@ export default function App() {
         },
         {
           date: "Etapa 5",
-          title: "Workshop de Cenários",
+          title: "Workshop de Cenários (em parceria com TSPA)",
           location: "Tete",
           image: cahoraBassaImg,
-          summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável.",
+          summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável. Realizado em parceria com a TSPA.",
           highlights: ["Consulta Pública", "Desenho Participativo", "Validação"]
         },
         {
@@ -905,6 +906,12 @@ export default function App() {
                           <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Cliente</p>
                           <p className="font-bold text-gray-800">{project.client}</p>
                         </div>
+                        {project.partner && (
+                          <div>
+                            <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Parceiro(s)</p>
+                            <p className="font-bold text-gray-800">{project.partner}</p>
+                          </div>
+                        )}
                         <div>
                           <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Localização</p>
                           <p className="font-bold text-gray-800 flex items-center gap-2">
