@@ -117,26 +117,33 @@ const Modal = ({ isOpen, onClose, title, content }: { isOpen: boolean, onClose: 
   );
 };
 
-const ImageCarousel = ({ images }: { images: string[] }) => {
+const ImageCarousel = ({ images }: { images: { src: string, caption?: string }[] | string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
+  const currentImg = typeof images[currentIndex] === 'string' ? { src: images[currentIndex] as string, caption: '' } : images[currentIndex] as { src: string, caption?: string };
+
   return (
-    <div className="relative mb-6 rounded-2xl overflow-hidden shadow-sm group bg-gray-100 flex items-center justify-center">
+    <div className="relative mb-6 rounded-2xl overflow-hidden shadow-sm group bg-gray-100 flex flex-col items-center justify-center">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
-          src={images[currentIndex]}
+          src={currentImg.src}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="w-full h-auto max-h-[500px] object-contain"
-          alt="Cenário"
+          alt={currentImg.caption || "Cenário"}
         />
       </AnimatePresence>
+      {currentImg.caption && (
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-sm text-xs font-bold text-vt-dark z-10 max-w-[80%] border border-gray-100">
+          {currentImg.caption}
+        </div>
+      )}
       
       {images.length > 1 && (
         <>
@@ -521,10 +528,35 @@ export default function App() {
         {
           date: "Etapa 5 & 6",
           title: "Workshop de Cenários & Proposta do Plano",
-          location: "Cahora Bassa e Mágoè",
-          images: [cahoraBassaImg, cbMap1, cbMap2, cbMap3, mgMap1, mgMap2, mgMap3, zmbMap1],
+          location: "Tete",
+          image: cahoraBassaImg,
           summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável e turismo responsável.",
-          highlights: ["Cenários de Desenvolvimento", "Desenho de Conservação", "Zoneamento Resiliente"]
+          highlights: ["Consulta Pública", "Desenho Participativo", "Validação"]
+        },
+        {
+          date: "Etapa 6",
+          title: "Cenários de Desenvolvimento: Cahora Bassa",
+          location: "Cahora Bassa",
+          images: [
+            { src: cbMap1, caption: "Cahora Bassa: Cenário Turístico" },
+            { src: cbMap2, caption: "Cahora Bassa: Cenário Agropecuário" },
+            { src: cbMap3, caption: "Cahora Bassa: Cenário Pesqueiro" }
+          ],
+          summary: "Mapas de propostas de desenvolvimento focado nos sectores Turístico, Agropecuário e Pesqueiro.",
+          highlights: ["Turístico", "Agropecuário", "Pesqueiro"]
+        },
+        {
+          date: "Etapa 6",
+          title: "Cenários de Desenvolvimento: Mágoè e Zumbo",
+          location: "Mágoè / Zumbo",
+          images: [
+            { src: mgMap1, caption: "Mágoè: Cenário Turístico" },
+            { src: mgMap2, caption: "Mágoè: Cenário Pesqueiro" },
+            { src: mgMap3, caption: "Mágoè: Cenário Agropecuário" },
+            { src: zmbMap1, caption: "Zumbo-Sede: Cenário Pesqueiro" }
+          ],
+          summary: "Mapas de propostas de desenvolvimento focado nos sectores estratégicos para Mágoè e Zumbo-Sede.",
+          highlights: ["Turístico", "Pesqueiro", "Agropecuário"]
         }
       ]
     },
