@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './components/Logo';
 import logoPath from './assets/logo-vt.png';
+import cahoraBassaImg from './assets/cahora-bassa.jpeg';
 
 // Smart Image Component that falls back to SVG Logo on error
 const ScalableLogo: React.FC<{ className?: string, scrolled: boolean }> = ({ className, scrolled }) => {
@@ -463,8 +464,9 @@ export default function App() {
         },
         {
           date: "Etapa 5 & 6",
-          title: "Cenários & Proposta do Plano",
-          location: "Tete",
+          title: "Workshop de Cenários & Proposta do Plano",
+          location: "Cahora Bassa",
+          image: cahoraBassaImg,
           summary: "Desenvolvimento participativo de cenários alinhados ao PNDT e PEOT Zambeze, estabelecendo o modelo de ordenamento para alocação de uso sustentável e turismo responsável.",
           highlights: ["Cenários de Desenvolvimento", "Desenho de Conservação", "Zoneamento Resiliente"]
         }
@@ -787,6 +789,11 @@ export default function App() {
                             <div className="space-y-4">
                               {project.events.map((event: any, eIdx: number) => (
                                 <div key={eIdx} className="bg-orange-50/50 p-6 rounded-[2rem] border border-orange-100/50">
+                                  {event.image && (
+                                    <div className="mb-6 rounded-2xl overflow-hidden shadow-sm">
+                                      <img src={event.image} alt={event.title} className="w-full h-auto max-h-64 object-cover hover:scale-105 transition-transform duration-500" />
+                                    </div>
+                                  )}
                                   <div className="flex justify-between items-start mb-4 gap-4 flex-wrap">
                                     <div>
                                       <p className="text-xs font-bold text-vt-orange uppercase tracking-widest">{event.date}</p>
