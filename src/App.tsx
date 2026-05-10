@@ -8,13 +8,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './components/Logo';
 import logoPath from './assets/logo-vt.png';
 import cahoraBassaImg from './assets/cahora-bassa.jpeg';
-import cbMap1 from './assets/Cahora Bassa Grupo 01_ Cenário de Desenvolvimento Turístico.jpeg';
-import cbMap2 from './assets/Cahora Bassa Grupo 02_ Cenário de Desenvolvimento Agropecuário.jpeg';
-import cbMap3 from './assets/Cahora Bassa Grupo 03_ Cenário de Desenvolvimento Pesqueiro.jpeg';
-import mgMap1 from './assets/Mágoè Grupo 01_ Cenário de Desenvolvimento Turístico.jpeg';
-import mgMap2 from './assets/Mágoè Grupo 02_ Cenário de Desenvolvimento Pesqueiro.jpeg';
-import mgMap3 from './assets/Mágoè Grupo 03_ Cenário de Desenvolvimento Agropecuário.jpeg';
-import zmbMap1 from './assets/Zumbo-sede_ Cenário de Desenvolvimento Pesqueiro.jpeg';
+import cbMap1 from './assets/cb-map-1.jpeg';
+import cbMap2 from './assets/cb-map-2.jpeg';
+import cbMap3 from './assets/cb-map-3.jpeg';
+import mgMap1 from './assets/mg-map-1.jpeg';
+import mgMap2 from './assets/mg-map-2.jpeg';
+import mgMap3 from './assets/mg-map-3.jpeg';
+import zmbMap1 from './assets/zmb-map-1.jpeg';
 
 // Smart Image Component that falls back to SVG Logo on error
 const ScalableLogo: React.FC<{ className?: string, scrolled: boolean }> = ({ className, scrolled }) => {
@@ -971,6 +971,13 @@ export default function App() {
                   </h4>
                   {selectedProject.events.map((event: any, eIdx: number) => (
                     <div key={eIdx} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                      {event.images && event.images.length > 0 ? (
+                        <ImageCarousel images={event.images} />
+                      ) : event.image ? (
+                        <div className="mb-4 rounded-xl overflow-hidden shadow-sm">
+                          <img src={event.image} alt={event.title} className="w-full h-auto max-h-48 object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      ) : null}
                       <p className="text-[10px] font-bold text-vt-orange uppercase">{event.date}</p>
                       <p className="font-bold text-gray-800 text-sm mb-2">{event.title}</p>
                       <p className="text-xs text-gray-500 leading-relaxed">{event.summary}</p>
