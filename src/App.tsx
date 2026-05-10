@@ -829,22 +829,22 @@ export default function App() {
             ].map((section, sIdx) => (
               <div key={sIdx}>
                 <h2 className="text-3xl font-display font-bold text-vt-dark mb-10 border-b-2 border-gray-100 pb-4">{section.title}</h2>
-                <div className="grid gap-12">
+                <div className="flex flex-col gap-24 md:gap-40 mt-12">
                   {section.projects.map((project, idx) => (
                     <motion.div 
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-gray-100 grid lg:grid-cols-3 gap-12"
+                      className="pt-16 md:pt-24 border-t border-gray-200 grid lg:grid-cols-12 gap-12 md:gap-16 relative"
                     >
-                      <div className="lg:col-span-2 space-y-6">
+                      <div className="lg:col-span-8 space-y-8">
                         <div className="flex gap-3">
                           <span className="px-4 py-1 bg-gray-100 text-vt-orange rounded-full text-xs font-bold uppercase tracking-widest">{project.category}</span>
                           <span className="px-4 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-bold uppercase tracking-widest">{project.year}</span>
                         </div>
-                        <h2 className="text-3xl font-display font-bold leading-tight">{project.title}</h2>
-                        <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight tracking-tight text-black">{project.title}</h2>
+                        <p className="text-gray-500 text-xl leading-relaxed max-w-3xl">{project.description}</p>
                         
                         <button 
                           onClick={() => setSelectedProject(project)}
@@ -863,29 +863,29 @@ export default function App() {
 
                         {project.events && (
                           <div className="mt-8 space-y-6">
-                            <h4 className="font-display font-bold text-xl flex items-center gap-2">
+                            <h4 className="font-display font-bold text-2xl flex items-center gap-3 text-black">
                               <FileText className="text-gray-800" /> Documentação & Eventos
                             </h4>
                             <div className="space-y-4">
                               {project.events.map((event: any, eIdx: number) => (
-                                <div key={eIdx} className="bg-gray-100/50 p-6 rounded-[2rem] border border-orange-100/50">
+                                <div key={eIdx} className="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100">
                                   {event.images && event.images.length > 0 ? (
                                     <ImageCarousel images={event.images} />
                                   ) : event.image ? (
-                                    <div className="mb-6 rounded-2xl overflow-hidden shadow-sm">
-                                      <img src={event.image} alt={event.title} className="w-full h-auto max-h-64 object-cover hover:scale-105 transition-transform duration-500" />
+                                    <div className="mb-8 rounded-3xl overflow-hidden shadow-sm">
+                                      <img src={event.image} alt={event.title} className="w-full h-auto max-h-[400px] object-cover hover:scale-105 transition-transform duration-700" />
                                     </div>
                                   ) : null}
                                   <div className="flex justify-between items-start mb-4 gap-4 flex-wrap">
                                     <div>
                                       <p className="text-xs font-bold text-vt-orange uppercase tracking-widest">{event.date}</p>
-                                      <h5 className="font-bold text-lg">{event.title}</h5>
+                                      <h5 className="font-bold text-xl text-black">{event.title}</h5>
                                     </div>
-                                    <div className="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-gray-400 border border-gray-100 flex items-center gap-1">
+                                    <div className="px-4 py-2 bg-white rounded-full text-[10px] font-bold text-gray-500 shadow-sm flex items-center gap-2">
                                       <MapPin size={10} /> {event.location}
                                     </div>
                                   </div>
-                                  <p className="text-sm text-gray-600 mb-4">{event.summary}</p>
+                                  <p className="text-base text-gray-600 mb-6 leading-relaxed">{event.summary}</p>
                                   <div className="grid md:grid-cols-2 gap-2">
                                     {event.highlights.map((highlight: string) => (
                                       <div key={highlight} className="flex items-center gap-2 text-xs text-gray-500 bg-white p-2 rounded-lg border border-gray-50">
@@ -901,7 +901,7 @@ export default function App() {
                         )}
                       </div>
 
-                      <div className="space-y-6 border-l border-gray-100 pl-8 hidden lg:block">
+                      <div className="lg:col-span-4 space-y-8 lg:pl-12 lg:border-l border-gray-100 hidden lg:block">
                         <div>
                           <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Cliente</p>
                           <p className="font-bold text-gray-800">{project.client}</p>
@@ -919,7 +919,7 @@ export default function App() {
                           </p>
                         </div>
                         <div className="pt-8">
-                          <div className="w-full h-32 bg-gray-50 rounded-3xl map-pattern opacity-50 flex items-center justify-center">
+                          <div className="w-full h-48 bg-gray-50 rounded-[2rem] map-pattern flex items-center justify-center opacity-80 border border-gray-100">
                             <Compass className="text-gray-800" size={32} />
                           </div>
                         </div>
